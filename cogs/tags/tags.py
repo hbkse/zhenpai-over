@@ -1,4 +1,5 @@
 import discord
+from discord import app_commands
 from discord.ext import commands
 import logging
 from .db import TagsDb
@@ -13,6 +14,18 @@ class Tags(commands.Cog):
     def __init__(self, bot: Zhenpai):
         self.bot = bot
         self.db = TagsDb(self.bot.db_pool)
+
+    @commands.hybrid_command()
+    @app_commands.allowed_installs(guilds=True, users=True)
+    @app_commands.allowed_contexts(guilds=True, dms=True, private_channels=True)
+    async def tag(self, ctx: commands.Context, tag_name: str) -> None:
+        """ Get a tag by name """
+
+        record = await self.db.get_tag(tag_name)
+        if record:
+            await ctx.send(record['content'])
+        else:
+            await ctx.send(f"Tag **{tag_name}** doesn't exist")
 
     @commands.command()
     async def save(self, ctx: commands.Context, tag_name: str, *, content: str) -> None:
