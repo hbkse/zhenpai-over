@@ -1,3 +1,6 @@
+# **_it's over_**
+With the release of Claude Opus 5.5, coding is now over. This repo is a snapshot in case in the future I want to look back at some of my old hand-written code, though much of the 2025 onwards commits were influenced by Claude 4.x models.
+
 # zhenpai
 
 Community discord bot for people who #pretend-to-learn-to-code. [Invite Link](https://discord.com/api/oauth2/authorize?client_id=670839356872982538&permissions=4398046511089&scope=bot)
